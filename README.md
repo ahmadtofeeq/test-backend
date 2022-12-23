@@ -1,21 +1,23 @@
 # Automatic Irrigation System
 
 ### Plot APIs
-For further reference, please consider the following sections:
+Following are the endpoints for plot:
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/3.0.0/gradle-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/3.0.0/gradle-plugin/reference/html/#build-image)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.0.0/reference/htmlsingle/#data.sql.jpa-and-spring-data)
-* [Spring REST Docs](https://docs.spring.io/spring-restdocs/docs/current/reference/html5/)
+
+* Add a new plot  [Post] /plot
+* List all plots  [Get] /plot/list
+* Configure Plot  [Put] /plot/configure/{id}
+* Edit a plot     [Put] /plot/edit/{id}
 
 ### Guides
-The following guides illustrate how to use some features concretely:
+##How solution is designed:
+* Two thread are created with a shared blocking queue to simulate IOT irrigation request/response model. 
+* One thread is acting as IOT sensors and send information to cloud that certain plots need to be irrigated.
+* Second thread is receiving response from first thread and acting upon it. Once Plot is irrigated, this thread change the irrigation status.
 
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
+### How to run
+<b>Pre-requiste</b> : Installed postgres data and create database named backend. database should be owned by user postges with password as postgres
+* Its a simple spring boot application which can be run once pre-requiste is matched.
 
-### Additional Links
-These additional references should also help you:
 
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 
