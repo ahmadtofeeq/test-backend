@@ -1,19 +1,24 @@
-package com.backend.demo.controller;
+package com.backend.controller;
 
 import java.util.List;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.backend.model.Plot;
 import com.backend.repository.PlotRepository;
 
-@RestController("plot")
+import jakarta.validation.Valid;
+
+@RestController()
+@RequestMapping(value = "/plot")
 public class PlotController {
 
 	private final PlotRepository plotRepository;
@@ -22,26 +27,24 @@ public class PlotController {
 		this.plotRepository = plotRepository;
 	}
 
-	@GetMapping("/list")
+	@GetMapping(value = "/list", produces = MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<List<Plot>> getAllPlots() {
 		return new ResponseEntity<>(plotRepository.findAll(), HttpStatus.OK);
 	}
 
-
-	@PostMapping("/")
-	public Plot addNewPlot(@RequestBody() Plot plot) {
+	@PostMapping("/add")
+	public Plot addNewPlot(@Valid @RequestBody() Plot plot) {
 		return plotRepository.save(plot);
 	}
 	
 	@PutMapping("/configure/{id}")
-	public Plot configurePlot(@RequestBody() Plot plot) {
+	public Plot configurePlot(@Valid @RequestBody() Plot plot) {
 		return plotRepository.save(plot);
 	}
 	
 	@PutMapping("/edit/{id}")
-	public Plot editPlot(@RequestBody() Plot plot) {
+	public Plot editPlot(@Valid @RequestBody() Plot plot) {
 		return plotRepository.save(plot);
 	}
-	
 	
 }

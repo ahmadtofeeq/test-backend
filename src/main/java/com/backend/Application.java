@@ -1,4 +1,4 @@
-package com.backend.demo;
+package com.backend;
 
 import java.util.ArrayList;
 import java.util.concurrent.ArrayBlockingQueue;
@@ -9,7 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.backend.model.Plot;
@@ -17,17 +17,16 @@ import com.backend.repository.PlotRepository;
 import com.irrigation.IrrigationSensorResponse;
 import com.irrigation.IrrigationSensorSimulation;
 
-@SpringBootApplication
-@ComponentScan({ "com.backend.repository" })
+@SpringBootApplication(scanBasePackages = {"com.backend.repository", "com.backend.controller", "com.backend.service"})
 @EnableJpaRepositories("com.backend.repository")
 @EntityScan({ "com.backend.model" })
-public class TestBackendApplication implements CommandLineRunner{
+public class Application extends SpringBootServletInitializer implements CommandLineRunner{
 
 	@Autowired
 	private PlotRepository plotRepository;
 	
 	public static void main(String[] args) {
-		SpringApplication.run(TestBackendApplication.class, args);
+		SpringApplication.run(Application.class, args);
 		System.out.println("--AppStarted---");
 	}
 

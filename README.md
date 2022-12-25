@@ -4,7 +4,7 @@
 Following are the endpoints for plot:
 
 
-* Add a new plot  [Post] /plot
+* Add a new plot  [Post] /plot/add
 * List all plots  [Get] /plot/list
 * Configure Plot  [Put] /plot/configure/{id}
 * Edit a plot     [Put] /plot/edit/{id}

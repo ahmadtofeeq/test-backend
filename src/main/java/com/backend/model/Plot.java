@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "plot")
@@ -13,10 +14,18 @@ public class Plot {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id = (long) 1;
+	
+	@NotNull(message = "Name is mandatory")
 	private String name = "plot-1";
+	
 	private String owner = "Tofeeq";
+	
+	@NotNull(message = "Width is mandatory")
 	private int width;
+	
+	@NotNull(message = "Length is mandatory")
 	private int length;
+	
 	private String slot;
 	private boolean irrigationStatus = false;
 
