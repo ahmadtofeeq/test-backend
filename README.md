@@ -22,14 +22,14 @@ Following are the endpoints for plot:
 `CREATE USER postgres WITH PASSWORD 'postgres';`
 * 3. Create database **backend**
 * 4. Use below script to assign proper access to database user
-## A script to
-`GRANT USAGE ON SCHEMA public TO postgres;
-GRANT ALL PRIVILEGES ON DATABASE backend TO postgres;
-GRANT ALL PRIVILEGES ON ALL tables IN SCHEMA public TO postgres;
-GRANT ALL PRIVILEGES ON ALL sequences IN SCHEMA public TO postgres;`
+# A script to grant access
+`GRANT USAGE ON SCHEMA public TO postgres; <br/>
+GRANT ALL PRIVILEGES ON DATABASE backend TO postgres;<br/>
+GRANT ALL PRIVILEGES ON ALL tables IN SCHEMA public TO postgres;<br/>
+GRANT ALL PRIVILEGES ON ALL sequences IN SCHEMA public TO postgres;`<br/>
 
 ## Running Spring boot application
-go to project directory and run below command
+Go to project directory and run below command <br/>
 `gradlew bootRun`
 
 
