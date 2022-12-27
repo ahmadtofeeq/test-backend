@@ -16,8 +16,21 @@ Following are the endpoints for plot:
 * Second thread is receiving response from first thread and acting upon it. Once Plot is irrigated, this thread change the irrigation status.
 
 ### How to run
-<b>Pre-requiste</b> : Installed postgres data and create database named backend. database should be owned by user postges with password as postgres
-* Its a simple spring boot application which can be run once pre-requiste is matched.
+<b>Pre-requiste</b> : Database readyness
+* 1. Install postgres or leverage existing postgres client 
+* 2. Create a user with username as **postgres** and password as **postgres**.
+`CREATE USER postgres WITH PASSWORD 'postgres';`
+* 3. Create database **backend**
+* 4. Use below script to assign proper access to database user
+## A script to
+`GRANT USAGE ON SCHEMA public TO postgres;
+GRANT ALL PRIVILEGES ON DATABASE backend TO postgres;
+GRANT ALL PRIVILEGES ON ALL tables IN SCHEMA public TO postgres;
+GRANT ALL PRIVILEGES ON ALL sequences IN SCHEMA public TO postgres;`
+
+## Running Spring boot application
+go to project directory and run below command
+`gradlew bootRun`
 
 
 
