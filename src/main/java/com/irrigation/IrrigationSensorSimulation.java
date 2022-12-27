@@ -23,17 +23,15 @@ public class IrrigationSensorSimulation implements Runnable {
 		int size = list.size() -1;
 		int randomCounter = 1;
 		while (true) {
-			System.out.println("Loop iteration starts...");
 			System.out.println("(IrrigationSensorSimulation) Random counter="+ randomCounter);
 
 			int index = size / randomCounter;
-			System.out.println("(IrrigationSensorSimulation) index counter="+ index);
 
 			Plot plot = list.get(index);
 			System.out.println("(IrrigationSensorSimulation) isIrrigationStatus="+ plot.isIrrigationStatus());
 			if (!plot.isIrrigationStatus()) {
 				try {
-					System.out.println("(IrrigationSensorSimulation) added to queue for irrigation=");
+					System.out.println("(IrrigationSensorSimulation) Request for irrigation for plot "+ plot.getId());
 					queue.add(plot);
 				} catch (Exception e) {
 					e.printStackTrace();

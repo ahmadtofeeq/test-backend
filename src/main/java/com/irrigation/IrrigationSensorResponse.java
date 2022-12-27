@@ -24,8 +24,10 @@ public class IrrigationSensorResponse implements Runnable {
 				if (!queue.isEmpty()) {
 					Plot plot = queue.remove();
 					plot.setIrrigationStatus(false);
+					System.out.println("Assuming response from Sensor");
 					plotRepository.save(plot);
 					System.out.println("Plot "+ plot.getId()+" is irrigated.");
+					System.out.println("Successfully irrigated!!");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
